@@ -1,0 +1,14 @@
+node_modules
+dist
+.github
+public
+icons
+
+# locks files
+
+yarn.lock
+package-lock.json
+pnpm-lock.yaml
+bun.lock
+
+env.d.ts

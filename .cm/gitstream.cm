@@ -1,0 +1,66 @@
+# -*- mode: yaml -*-
+
+manifest:
+  version: 1.0
+
+automations:
+  estimated_time_to_review:
+    if:
+      - true
+    run:
+      - action: add-label@v1
+        args:
+          label: "{{ calc.etr }} min review"
+          color: {{ 'E94637' if (calc.etr >= 20) else ('FBBD10' if (calc.etr >= 5) else '36A853') }}
+
+  safe_changes:
+    if:
+      - {{ is.formatting or is.docs or is.tests }}
+    run:
+      - action: add-label@v1
+        args:
+          label: 'safe-changes'
+      - action: approve@v1
+  
+  approve_tiny_fix:
+    if:
+      - {{ is.one_file and is.one_line }}
+    run:
+      - action: add-label@v1
+        args:
+          label: 'tiny-fix'
+      - action: approve@v1
+      
+  trello_ticket_check:
+    if: 
+      - "{{ not (trello_ticket.ticket_in_desc) }}"
+    run:
+      - action: add-label@v1
+        args:
+          label: "missing-trello-ticket"
+          color: '#F6443B'
+          
+  large_review:
+    if:
+      - {{ files | length >= 10 }}
+      - {{ branch | estimatedReviewTime >= 30 }}
+    run:
+      - action: set-required-approvals@v1
+        args:
+          approvals: 2
+      - action: add-comment@v1
+        args:
+          comment: |
+            This PR may require a significant amount of effort to review. Please consider dividing your PR up into multiple smaller contributions.
+
+calc:
+  etr: {{ branch | estimatedReviewTime }}
+is:
+  formatting: {{ source.diff.files | isFormattingChange }}
+  docs: {{ files | allDocs }}
+  tests: {{ files | allTests }}
+  one_file: {{ files | length == 1 }}
+  one_line: {{ branch.diff.size <= 2 }}
+trello_ticket:
+  ticket_in_title: {{ pr.title | includes(regex=r/[A-Z]{2,3}-[0-9]{1,4}/) }}
+  ticket_in_desc: {{ pr.description | includes(regex=r/https:\/\/trello\.com\/c\/[A-Za-z0-9]{8}\/[0-9]{1,4}-[A-Za-z]{2,4}-[0-9]{1,4}/) }}

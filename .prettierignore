@@ -1,0 +1,17 @@
+# Ignore artifacts:
+build
+dist
+node_modules
+
+# locks files
+pnpm-lock.yaml
+yarn.lock
+package-lock.json
+bun.lock
+
+
+CHANGELOG.md
+.github
+
+public
+icons

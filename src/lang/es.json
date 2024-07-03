@@ -1,0 +1,43 @@
+{
+    "common": {
+        "footer": {
+            "cisc": "CISC",
+            "ciscDescription": "Uniendo mentes ingeniosas en la creación del mañana digital, donde cada línea de código es un paso hacia la innovación y el progreso tecnológico.",
+            "rights": "© 2024 CISC. Todos los derechos reservados.",
+            "privacyPolicy": "Políticas de privacidad",
+            "termsConditions": "Términos y condiciones",
+            "about": "Acerca de",
+            "features": "Características",
+            "ourProcess": "Nuestro proceso",
+            "benefits": "Beneficios",
+            "blog": "Blog",
+            "contact": "Contacto",
+            "enterYourEmail": "Ingresa tu correo electrónico",
+            "signUp": "Regístrate"
+        },
+        "components": {
+            "column": "Columna",
+            "inputStyles": "Estilos de inputs",
+            "buttonsStyles": "Estilos de botones",
+            "fontsStyles": "Estilos de fuentes",
+            "primary": "Primario",
+            "secondary": "Secundario",
+            "light": "Claro",
+            "dark": "Oscuro",
+            "outline": "Contorno",
+            "exampleInput": "Ejemplo de input",
+            "messageColumn": "Esto es una Columna"
+        }
+    },
+    "home": {
+        "seo": {
+            "title": "Inicio",
+            "description": "Pagina de Inicio"
+        },
+        "event": {
+            "events": "Eventos",
+            "readMore": "Leer más",
+            "viewAll": "Para visitar todos los eventos disponibles y los que han pasado, clickea:"
+        }
+    }
+}

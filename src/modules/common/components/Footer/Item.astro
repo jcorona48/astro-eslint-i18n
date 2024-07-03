@@ -1,0 +1,22 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import Link from '@/modules/common/components/Link.astro';
+type AnchorProps = HTMLAttributes<'a'>;
+
+interface Props extends AnchorProps {
+    label: string;
+}
+
+const { label, ...props } = Astro.props;
+
+const defaultClass =
+    'shadow-drop md:items-baseline opacity-70 duration-300 hover:opacity-100';
+
+const classList = [defaultClass];
+---
+
+<li class:list={classList}>
+    <Link {...props}>
+        {label}
+    </Link>
+</li>

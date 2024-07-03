@@ -1,0 +1,102 @@
+---
+import EventCard from './Card.astro';
+import Typography from '@/modules/common/components/Typography.astro';
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+import { type IconsName } from '@/modules/common/components/IconByName';
+import { Button } from '@/components/ui/button';
+
+const lang = getLangFromUrl(Astro.url);
+const { home: THome } = useTranslations(lang);
+const { event: TEvent } = THome;
+
+const events = [
+    {
+        title: "Simplify Complex Concepts with SoftCraft's Interactive Elements",
+        description:
+            "SoftCraft's innovative platform simplifies the software creation process, making it accessible to all users.",
+        link: '/#',
+        label: TEvent.readMore,
+        icon: 'Pencil',
+    },
+    {
+        title: "Enhance User Comprehension with SoftCraft's Interactive Animations",
+        description:
+            "SoftCraft's innovative platform simplifies the software creation process, making it accessible to all users.",
+        date: '02/02/2022',
+        link: '/#',
+        label: TEvent.readMore,
+        icon: 'Calendar',
+    },
+    {
+        title: 'Unlock the Potential of SoftCraft: Simplify Software Creation',
+        description:
+            "SoftCraft's innovative platform simplifies the software creation process, making it accessible to all users.",
+        link: '/#',
+        label: TEvent.readMore,
+        icon: 'Rocket',
+    },
+];
+---
+
+<section>
+    <header class="container">
+        <Typography variant="luckie" as="h2"> {TEvent.events} </Typography>
+    </header>
+    <main class="container">
+        {
+            events.map((event) => (
+                <EventCard
+                    title={event.title}
+                    description={event.description}
+                    link={event.link}
+                    label={event.label}
+                    icon={event.icon as IconsName}
+                />
+            ))
+        }
+    </main>
+    <footer>
+        <Typography variant="luckie" as="h4" color="primary">
+            {TEvent.viewAll}
+        </Typography>
+        <Button variant="light" className="px-20">
+            {TEvent.events}
+        </Button>
+    </footer>
+</section>
+
+<style>
+    section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2.5rem;
+        width: 100%;
+        padding: 4rem 0;
+    }
+
+    header {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    main {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+        background-color: hsl(var(--light));
+        padding: 1rem 2rem;
+    }
+</style>

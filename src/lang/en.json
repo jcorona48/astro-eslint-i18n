@@ -1,0 +1,43 @@
+{
+    "common": {
+        "footer": {
+            "cisc": "CISC",
+            "ciscDescription": "Bringing ingenious minds together in the creation of the digital tomorrow, where every line of code is a step towards innovation and technological progress.",
+            "rights": "© 2024 CISC. All rights reserved.",
+            "privacyPolicy": "Privacy Policy",
+            "termsConditions": "Terms and Conditions",
+            "about": "About",
+            "features": "Features",
+            "ourProcess": "Our Process",
+            "benefits": "Benefits",
+            "blog": "Blog",
+            "contact": "Contact",
+            "enterYourEmail": "Enter your email",
+            "signUp": "Sign Up"
+        },
+        "components": {
+            "column": "Column",
+            "inputStyles": "Input styles",
+            "buttonsStyles": "Buttons Styles",
+            "fontsStyles": "Fonts Styles",
+            "primary": "Primary",
+            "secondary": "Secondary",
+            "light": "Light",
+            "dark": "Dark",
+            "outline": "Outline",
+            "exampleInput": "Example input",
+            "messageColumn": "This is a Column"
+        }
+    },
+    "home": {
+        "seo": {
+            "title": "Home",
+            "description": "Home Page"
+        },
+        "event": {
+            "events": "Events",
+            "readMore": "Read More",
+            "viewAll": "To visit all available events and those that have passed, click:"
+        }
+    }
+}

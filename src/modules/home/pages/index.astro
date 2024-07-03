@@ -1,0 +1,15 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { useTranslations, getLangFromUrl } from '@/i18n/utils';
+import EventSection from '../components/Events/Section.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const { home: THome } = useTranslations(lang);
+const { seo: TSEO } = THome;
+---
+
+<Layout title={TSEO.title} description={TSEO.description}>
+    <>
+        <EventSection />
+    </>
+</Layout>

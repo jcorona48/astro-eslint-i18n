@@ -1,0 +1,92 @@
+---
+import { Button } from '@/components/ui/button';
+import Typography from '../Typography.astro';
+import Column from '../Column.astro';
+import Item from './Item.astro';
+import { Input } from '@/components/ui/input';
+import { useTranslations, getLangFromUrl } from '@/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const { common: TCommon } = useTranslations(lang);
+const { footer: TFooter } = TCommon;
+
+const {
+    about,
+    benefits,
+    blog,
+    cisc,
+    ciscDescription,
+    contact,
+    enterYourEmail,
+    features,
+    ourProcess,
+    privacyPolicy,
+    rights,
+    signUp,
+    termsConditions,
+} = TFooter;
+---
+
+<footer class="mt-12 flex w-full bg-primary py-5 text-primary-foreground">
+    <main
+        class="container mb-10 mt-3 flex w-full flex-col-reverse gap-8 md:flex-row md:gap-28"
+    >
+        <Column class="flex-1 gap-8">
+            <section class="flex flex-col gap-4">
+                <div class="flex items-center justify-center md:justify-start">
+                    <img
+                        src="/assets/cisc-club-light.svg"
+                        alt="Logo CISC"
+                        class="mr-2 size-14 rounded-2xl"
+                    />
+                    <Typography variant="luckie" as="h2" color="light"
+                        >{cisc}</Typography
+                    >
+                </div>
+                <Typography variant="default" as="p" color="light">
+                    {ciscDescription}
+                </Typography>
+            </section>
+            <Typography
+                variant="inter"
+                as="ul"
+                color="light"
+                class="flex w-full gap-3 text-xs"
+            >
+                <Item href="#" label={rights} />
+                <Item href="#" label={privacyPolicy} />
+                <Item href="#" label={termsConditions} />
+            </Typography>
+        </Column>
+        <Column class="gap-6 sm:flex-row sm:justify-between sm:gap-8 md:gap-28">
+            <Column>
+                <ul class="flex flex-col gap-6 text-center sm:text-left">
+                    <Item href="#" label={about} />
+                    <Item href="#" label={features} />
+                    <Item href="#" label={ourProcess} />
+                    <Item href="#" label={benefits} />
+                </ul>
+            </Column>
+            <Column>
+                <ul class="flex flex-col gap-6 text-center sm:text-left">
+                    <Item href="#" label={blog} />
+                    <Item href="#" label={contact} />
+                </ul>
+            </Column>
+            <Column class="mt-2 sm:mt-0">
+                <main
+                    class="flex flex-col gap-2 sm:flex-row sm:justify-center md:justify-end"
+                >
+                    <Input
+                        className="sm:w-52"
+                        placeholder={enterYourEmail}
+                        type="email"
+                    />
+                    <Button className="h-10" variant="dark">
+                        {signUp}
+                    </Button>
+                </main>
+            </Column>
+        </Column>
+    </main>
+</footer>

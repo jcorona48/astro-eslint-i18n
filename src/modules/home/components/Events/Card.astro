@@ -1,0 +1,48 @@
+---
+import {
+    Card as CardComponent,
+    CardHeader,
+    CardContent,
+    CardFooter,
+    CardTitle,
+} from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import Link from '@/modules/common/components/Link.astro';
+import Typography from '@/modules/common/components/Typography.astro';
+import IconByName, {
+    type IconsName,
+} from '@/modules/common/components/IconByName';
+
+interface Props {
+    title: string;
+    description: string;
+    link: string;
+    label: string;
+    icon?: IconsName;
+}
+
+const { title, description, link, label, icon } = Astro.props;
+---
+
+<CardComponent
+    className="flex w-full max-w-80 flex-col shadow-lg transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl"
+>
+    <CardHeader className="flex w-full flex-col items-center md:items-start">
+        {icon && <IconByName name={icon} size={84} />}
+        <CardTitle
+            ><Typography as="h4" variant="luckie" color="primary">
+                {title}
+            </Typography>
+        </CardTitle>
+    </CardHeader>
+    <CardContent className="flex-1">
+        <Typography as="p" variant="default" color="dark" class="text-sm">
+            {description}
+        </Typography>
+    </CardContent>
+    <CardFooter className="flex w-full justify-center md:justify-start">
+        <Button variant="light">
+            <Link href={link}> {label} </Link>
+        </Button>
+    </CardFooter>
+</CardComponent>

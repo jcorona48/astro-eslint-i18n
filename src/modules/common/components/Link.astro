@@ -1,0 +1,17 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import { useTranslatedPath, getLangFromUrl } from '@/i18n/utils';
+
+type AnchorProps = HTMLAttributes<'a'>;
+
+type Props = AnchorProps;
+
+const lang = getLangFromUrl(Astro.url);
+const translatedPath = useTranslatedPath(lang);
+
+const { href, ...props } = Astro.props;
+---
+
+<a {...props} href={translatedPath(href)}>
+    <slot />
+</a>

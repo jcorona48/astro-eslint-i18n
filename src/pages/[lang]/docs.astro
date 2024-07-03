@@ -1,0 +1,13 @@
+---
+import type { GetStaticPaths } from 'astro';
+import DocsPage from '@/modules/docs/pages/index.astro';
+
+import { languages } from '@/i18n/ui';
+
+export const getStaticPaths = (() => {
+    const lang = Object.keys(languages);
+    return lang.map((lang) => ({ params: { lang } }));
+}) satisfies GetStaticPaths;
+---
+
+<DocsPage />

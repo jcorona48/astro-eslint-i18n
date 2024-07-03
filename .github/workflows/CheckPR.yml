@@ -1,0 +1,31 @@
+name: Check PR
+
+on:
+  pull_request:
+    branches:
+      - main  # Coloca aquí la rama principal de tu repositorio
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4.0.2
+        with:
+          node-version: '20.x'  # Coloca aquí la versión de Node.js que deseas utilizar
+          
+      - name: Install pnpm
+        run: npm install -g pnpm@8.15.3
+      
+      - name: Install dependencies
+        run: pnpm install --no-lockfile
+      
+      - name: Run check
+        run: pnpm check
+      
+      - name: Build
+        run: pnpm build

@@ -1,0 +1,17 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import { cn } from '@/lib/utils';
+
+type Props = HTMLAttributes<'div'>;
+
+const { class: className, ...props } = Astro.props;
+
+const divProps = {
+    class: cn('flex flex-col', className),
+    ...props,
+};
+---
+
+<div {...divProps}>
+    <slot />
+</div>
